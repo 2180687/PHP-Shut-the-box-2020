@@ -16,6 +16,9 @@ Router::get('/',			'HomeController/index');
 Router::get('home/',		'HomeController/index');
 Router::get('home/index',	'HomeController/index');
 Router::get('home/start',	'HomeController/start');
+Router::get('home/highscores','HomeController/highscores');
+Router::get('home/register','HomeController/register');
+Router::get('home/login','HomeController/login');
 
 
 

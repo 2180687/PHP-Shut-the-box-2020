@@ -24,11 +24,6 @@ class HomeController extends BaseController
         return View::make('home.start');
     }
 
-    public function login(){
-        Throw new Exception('Method not implemented. Do it yourself!');
-    }
-
-
     public function worksheet(){
 
         View::attachSubView('titlecontainer', 'layout.pagetitle', ['title' => 'MVC Worksheet']);
@@ -53,6 +48,16 @@ class HomeController extends BaseController
         Session::destroy();
         Redirect::toRoute('home/worksheet');
     }
+    public function highscores(){
+        return view::make('home/highscores');
+    }
 
+    public function register(){
+        return view::make('home/register');
+    }
+
+    public function login(){
+        return view::make('home/login');
+    }
 
 }
