@@ -21,6 +21,8 @@ Router::get('home/register','HomeController/register');
 Router::get('home/login','HomeController/login');
 
 
+Router::get('backoffice/','Homecontroller/backoffice');
+
 
 
 

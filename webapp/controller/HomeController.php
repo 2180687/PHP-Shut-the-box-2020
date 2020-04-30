@@ -60,4 +60,8 @@ class HomeController extends BaseController
         return view::make('home/login');
     }
 
+    public function backoffice(){
+        return view::make('backoffice/index');
+    }
+
 }
