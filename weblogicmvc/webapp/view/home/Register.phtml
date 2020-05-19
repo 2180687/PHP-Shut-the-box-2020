@@ -2,17 +2,11 @@
 use ArmoredCore\WebObjects\Asset;
 use ArmoredCore\WebObjects\Layout;
 use ArmoredCore\WebObjects\URL;
+use ArmoredCore\WebObjects\ErrMgr;
+use ArmoredCore\WebObjects\Data;
 Layout::includeLayout('indexheader'); 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
     
 
  <p></p>
@@ -21,25 +15,41 @@ Layout::includeLayout('indexheader');
  <br>
  <br>
  
- <div align="center">;
- <h1> Register </h1>;
+ <div align="center">
+ <h1> Register </h1>
 </div>
 <p>
+
+    <?php $registo = Data::get('informacao')?>
+    <?php ErrMgr::attach($registo) ?>
+
 <br><br><br><br><br>
-<form>
+<form method="Post" action="<?= URL::toRoute('home/registar') ?>">
 <div align="center">
 Username
-<input type="text" name="Username" placeholder="John"/> 
+<input type="text" value="<?=$registo->username?>" name="username" placeholder="John" required/>
+    <?= ErrMgr::bind('username') ?>
 <br><br>
 
+Nome Completo
+<input type="text" value="<?=$registo->nomecompleto?>" name="nomecompleto" placeholder="John Smith" required/>
+    <?= ErrMgr::bind('nomecompleto') ?>
+<br><br>
 Email
-<input type="email"name="Email" placeholder ="John@hotmail.com"/>
+<input type="email" value="<?=$registo->email?>" name="email" placeholder ="John@hotmail.com" required/>
+    <?= ErrMgr::bind('email') ?>
 <br><br>
-Password
-<input type="password"name="Password" placeholder ="password"/>
-<br><br>
-<input type="submit">
-</div>
 
-</body>
-</html>
+Data Nascimento
+<input type="date" value="<?=$registo->datanascimento?>" name="data" required/>
+    <?= ErrMgr::bind('datanascimento') ?>
+<br><br>
+
+Password
+<input type="password" name="password" placeholder ="password" required/>
+<br><br>
+
+<input type="submit" value="Registar">
+</form>
+</div>
+     <?php Layout::includeLayout('footer') ?>

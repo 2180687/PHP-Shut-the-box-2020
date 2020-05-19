@@ -3,6 +3,7 @@ use ArmoredCore\Controllers\BaseController;
 use ArmoredCore\WebObjects\Redirect;
 use ArmoredCore\WebObjects\Session;
 use ArmoredCore\WebObjects\View;
+use ArmoredCore\WebObjects\Post;
 
 /**
  * Created by PhpStorm.
@@ -35,7 +36,7 @@ class HomeController extends BaseController
         $dataObject = MetaArmCoreModel::getComponents();
         Session::set('object', $dataObject);
 
-        Redirect::toRoute('home/worksheet');
+        Redirect::toRoute('home.worksheet');
     }
 
     public function showsession(){
@@ -46,22 +47,42 @@ class HomeController extends BaseController
     public function destroysession(){
 
         Session::destroy();
-        Redirect::toRoute('home/worksheet');
+        Redirect::toRoute('home.worksheet');
     }
     public function highscores(){
-        return view::make('home/highscores');
+        return view::make('home.highscores');
     }
 
     public function register(){
-        return view::make('home/register');
+        return view::make('home.register');
     }
 
+    public function registar(){
+        \Tracy\Debugger::barDump(Post::getAll());
+        $passwordhash = password_hash(Post::get('password'), PASSWORD_DEFAULT);
+        $registo = new User([
+            'username' => Post::get('username'),
+            'nomecompleto'=>Post::get('nomecompleto'),
+            'email'=>Post::get('email'),
+            'datanascimento' => Post::get('data'),
+            'password' => $passwordhash
+        ]);
+        if ($registo->is_valid())
+        {
+            $registo->save();
+            Redirect::toRoute('home/login');
+        }else {
+            Redirect::flashToRoute('home/register', ['informacao' => $registo]);
+        }
+    }
+
+
     public function login(){
-        return view::make('home/login');
+        return view::make('home.login');
     }
 
     public function backoffice(){
-        return view::make('backoffice/index');
+        return view::make('backoffice.index');
     }
 
 }

@@ -20,6 +20,8 @@ Router::get('home/highscores','HomeController/highscores');
 Router::get('home/register','HomeController/register');
 Router::get('home/login','HomeController/login');
 
+Router::post('home/registar', 'HomeController/registar');
+
 
 Router::get('backoffice/','Homecontroller/backoffice');
 
