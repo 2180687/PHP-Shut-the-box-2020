@@ -1,9 +1,7 @@
 <?php
 use ArmoredCore\WebObjects\Asset;
 use ArmoredCore\Facades\AssetBundler;
-use ArmoredCore\Facades\DebugRenderer;
 use ArmoredCore\WebObjects\URL;
-use ArmoredCore\WebObjects\Session;
 ?>
 
 <!DOCTYPE html>
@@ -42,21 +40,16 @@ use ArmoredCore\WebObjects\Session;
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav pull-right">
                 <li class="active"><a href="<?= URL::toRoute('home/index')?>">Home</a></li>
+                <li><a href="<?= URL::toRoute('home/highscores')?>">Backoffice</a></li><!-- MUDAR O ROUTE -->
                 <li><a href="<?= URL::toRoute('home/highscores')?>">Highscores</a></li>
+                <li><a href="<?= URL::toRoute('home/register')?>">Play</a></li> <!-- MUDAR O ROUTE -->
+                <li><a href="<?= URL::toRoute('home/login')?>">Logout</a></li>  <!-- MUDAR O ROUTE -->
+                </li>
 
-                <?php if(Session::has("utilizador")){ ?>
-                    <li><a href="<?= URL::toRoute('home/register')?>">Play</a></li>
-                    <li><a href="<?= URL::toRoute('home/logout')?>">Logout</a></li>
-                    <?php $user=Session::get("utilizador");
-                    if($user->admin=1) { ?>
-                        <li><a href="<?= URL::toRoute('home/register')?>">Backoffice</a></li>
-                    <?php } ?>
-                <?php } else { ?>
-                    <li><a href="<?= URL::toRoute('home/register')?>">Register</a></li>
-                    <li><a href="<?= URL::toRoute('home/login')?>">Login</a></li>
-                <?php } ?>
+
             </ul>
         </div><!--/.nav-collapse -->
     </div>
 </div>
 <!-- /.navbar -->
+<header id="head" class="secondary"></header>

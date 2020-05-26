@@ -20,10 +20,13 @@ Router::get('home/highscores','HomeController/highscores');
 Router::get('home/register','HomeController/register');
 Router::get('home/login','HomeController/login');
 
-Router::post('home/registar', 'HomeController/registar');
+Router::get('home/logout','HomeController/logout');
 
+Router::post('home/registar', 'HomeController/registar');
+Router::post('home/verifylogin','HomeController/verifylogin');
 
 Router::get('backoffice/','Homecontroller/backoffice');
+Router::get('backoffice/index2','Homecontroller/index2');
 
 
 

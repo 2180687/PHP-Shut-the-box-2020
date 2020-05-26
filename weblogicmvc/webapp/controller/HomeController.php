@@ -81,8 +81,41 @@ class HomeController extends BaseController
         return view::make('home.login');
     }
 
+
+    public function verifylogin()
+    {
+    $dados=\ArmoredCore\WebObjects\Post::getAll();
+    $username=Post::get('username');
+    $password=Post::get('password');
+
+    $user= User::find_by_username($username);
+
+    if (password_verify($password, $user->password)) {
+
+        if ($user->ativacao == 1) {
+            Session::set("utilizador", $user);
+            \Tracy\Debugger::barDump(Session::get('utilizador'));
+        }
+    } else  {
+        //DAVA ERRO PELA PASSWORD SER DIFERENTE
+        }
+    return Redirect::toRoute('home/index');
+
+    }
+
+    public function logout(){
+       Session::destroy("utilizador");
+        Redirect::toRoute('home/index');
+
+    }
+
     public function backoffice(){
         return view::make('backoffice.index');
+    }
+
+    public function index2(){
+        $registo = User::all();
+        return View::make('backoffice.index2',['informacao' => $registo]);
     }
 
 }
