@@ -28,6 +28,8 @@ Router::post('home/verifylogin','HomeController/verifylogin');
 Router::get('backoffice/','Homecontroller/backoffice');
 Router::get('backoffice/index2','Homecontroller/index2');
 
+Router::get('jogo/play','GameController/game');
+
 
 
 

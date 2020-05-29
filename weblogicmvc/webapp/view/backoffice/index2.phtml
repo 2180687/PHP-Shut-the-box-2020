@@ -25,7 +25,7 @@ Layout::includeLayout('header') ?>
                             <?php\Tracy\Debugger::barDump($registo)?>
                             <td><?=$registo->id?></td>
 
-                            <td><?=$registo->name?></td>
+                            <td><?=$registo->username?></td>
                             <td><?=$registo->ativacao?></td>
                             <td>
                                 <!--<a href="<?=Url::toRoute('book/show', $book->id)?>" class="btn btn-info" role="button">Show</a>

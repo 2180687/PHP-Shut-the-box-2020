@@ -1,0 +1,53 @@
+
+<?php
+use ArmoredCore\WebObjects\Session;
+use ArmoredCore\WebObjects\Asset;
+
+echo'<input type="button" value="1"';
+echo'<p>';
+echo'<br>';
+echo'<br>';
+echo'<input type="button" value="2"';
+echo'<p>';
+echo'<br>';
+echo'<br>';
+echo'<input type="button" value="3"';
+echo'<p>';
+echo'<br>';
+echo'<br>';
+echo'<input type="button" value="4"';
+echo'<p>';
+echo'<br>';
+echo'<br>';
+echo'<input type="button" value="5"';
+echo'<p>';
+echo'<br>';
+echo'<br>';
+echo'<input type="button" value="6"';
+echo'<p>';
+echo'<br>';
+echo'<br>';
+echo'<input type="button" value="7"';
+echo'<p>';
+echo'<br>';
+echo'<br>';
+echo'<input type="button" value="8"';
+echo'<p>';
+echo'<br>';
+echo'<br>';
+echo'<input type="button" value="9"';
+echo'<p>';
+echo'<br>';
+echo'<br>';
+
+echo '<div align="center">';
+echo'<input type="button" value="Lançar dados"';
+echo'</div>';
+
+$game=Session::get("game");
+
+echo $game->tabuleiro->resultadoDado1;
+
+Asset::image('Dice'.$game->tabuleiro->resultadoDado1.'.png');
+//Tracy\Debugger::barDump($valor);
+?>
