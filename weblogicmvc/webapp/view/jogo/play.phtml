@@ -48,6 +48,8 @@ $game=Session::get("game");
 
 echo $game->tabuleiro->resultadoDado1;
 
-Asset::image('Dice'.$game->tabuleiro->resultadoDado1.'.png');
+?> <img src="<?=Asset::image('Dice'.$game->tabuleiro->resultadoDado1.'.png')?>"
+
+><?php
 //Tracy\Debugger::barDump($valor);
 ?>

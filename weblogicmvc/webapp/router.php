@@ -26,7 +26,12 @@ Router::post('home/registar', 'HomeController/registar');
 Router::post('home/verifylogin','HomeController/verifylogin');
 
 Router::get('backoffice/','Homecontroller/backoffice');
-Router::get('backoffice/index2','Homecontroller/index2');
+Router::get('backoffice/index2','HomeController/index2');
+Router::get('backoffice/show','HomeController/show');
+
+Router::get('backoffice/editar','HomeController/editar');
+Router::post('backoffice/editar','HomeController/update');
+Router::get('backoffice/destroy','Homecontroller/destroy');
 
 Router::get('jogo/play','GameController/game');
 

@@ -1,9 +1,12 @@
 <?php
+use ArmoredCore\WebObjects\Data;
 use ArmoredCore\WebObjects\Asset;
 use ArmoredCore\WebObjects\Layout;
 use ArmoredCore\WebObjects\URL;
-Layout::includeLayout('indexheader'); 
+Layout::includeLayout('indexheader');
+$pontuacao= Data::get('pontos')
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,11 +27,29 @@ Layout::includeLayout('indexheader');
  <div align="center">
  <h1> Highscores </h1>
 
+     <?php
+     $i=10;
+
+     foreach ($pontuacao as $p) {
+
+         ?>
 
      <span style="margin-left"></span><b>Username</b></span>
+     <?=$p->users->username?> -
+             <span style="margin-right"><b>Pontos</b></span>
+             <?=$p->pontos?>
+            <br>
 
-     <span style="margin-right"><b>Pontos</b></span>
 
+           <?php } ?>
+     <?php
+      {
+         ?>
+
+
+         <br>
+
+     <?php } ?>
  </div>
  <?php Layout::includeLayout('footer')?>
 </body>

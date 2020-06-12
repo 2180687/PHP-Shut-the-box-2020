@@ -49,9 +49,6 @@ class HomeController extends BaseController
         Session::destroy();
         Redirect::toRoute('home.worksheet');
     }
-    public function highscores(){
-        return view::make('home.highscores');
-    }
 
     public function register(){
         return view::make('home.register');
@@ -74,6 +71,13 @@ class HomeController extends BaseController
         }else {
             Redirect::flashToRoute('home/register', ['informacao' => $registo]);
         }
+    }
+
+    public function highscores(){
+        $pontuacao=Game::find('all',  array('order' => 'pontos desc', 'limit' => 10));
+        //foreach ($teste as $t)
+        //\Tracy\Debugger::barDump($t->users->username);
+        return View::make('home.highscores',['pontos' => $pontuacao]);
     }
 
 
@@ -118,4 +122,51 @@ class HomeController extends BaseController
         return View::make('backoffice.index2',['informacao' => $registo]);
     }
 
+    public function show($id)
+    {
+        $registo = User::find($id);
+
+        \Tracy\Debugger::barDump($registo);
+
+        if (is_null($registo)) {
+            // redirect to standard error page
+        } else {
+            View::make('backoffice.show', ['informacao' => $registo]);
+        }
+    }
+
+
+    public function editar($id)
+    {
+        $registo = User::find($id);
+
+        if (is_null($registo)) {
+            // redirect to standard error page
+        } else {
+            View::make('backoffice.editar', ['informacao' => $registo]);
+        }
+    }
+
+    public function update($id)
+    {
+        $registo = User::find($id);
+        $registo->update_attributes(Post::getAll());
+
+        if($registo->is_valid()){
+            $registo->save();
+            Redirect::toRoute('backoffice/index2');
+        } else {
+            // return form with data and errors
+            Redirect::flashToRoute('backoffice/editar', ['informacao' => $registo], $id);
+        }
+    }
+
+
+    public function destroy($id)
+    {
+        $registo = User::find($id);
+        $registo->delete();
+        Redirect::toRoute('backoffice/index2');
+    }
 }
+
