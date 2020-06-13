@@ -47,8 +47,11 @@ echo'</div>';
 $game=Session::get("game");
 
 echo $game->tabuleiro->resultadoDado1;
+echo $game->tabuleiro->resultadoDado2;
 
 ?> <img src="<?=Asset::image('Dice'.$game->tabuleiro->resultadoDado1.'.png')?>"
+        <br>
+    <img src="<?=Asset::image('Dice'.$game->tabuleiro->resultadoDado2.'.png')?>"
 
 ><?php
 //Tracy\Debugger::barDump($valor);

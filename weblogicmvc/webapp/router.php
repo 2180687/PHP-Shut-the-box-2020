@@ -25,7 +25,8 @@ Router::get('home/logout','HomeController/logout');
 Router::post('home/registar', 'HomeController/registar');
 Router::post('home/verifylogin','HomeController/verifylogin');
 
-Router::get('backoffice/','Homecontroller/backoffice');
+Router::get('backoffice/index','HomeController/backoffice');
+Router::post('backoffice/index','HomeController/verifyloginbackoffice');
 Router::get('backoffice/index2','HomeController/index2');
 Router::get('backoffice/show','HomeController/show');
 

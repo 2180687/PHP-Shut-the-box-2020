@@ -44,7 +44,7 @@ use ArmoredCore\WebObjects\Session;
                 <li><a href="<?= URL::toRoute('home/highscores')?>">Highscores</a></li>
                 <?php if(Session::has("utilizador")){ ?>
                     <li><a href="<?= URL::toRoute('home/register')?>">Play</a></li>
-                    <li><a href="<?= URL::toRoute('home/register')?>">Logout</a></li>
+                    <li><a href="<?= URL::toRoute('home/logout')?>">Logout</a></li>
                 <?php } else { ?>
                 <li><a href="<?= URL::toRoute('home/register')?>">Register</a></li>
                 <li><a href="<?= URL::toRoute('home/login')?>">Login</a></li>

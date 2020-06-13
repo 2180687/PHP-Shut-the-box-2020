@@ -48,8 +48,8 @@ use ArmoredCore\WebObjects\Session;
                     <li><a href="<?= URL::toRoute('jogo/play')?>">Play</a></li>
                     <li><a href="<?= URL::toRoute('home/logout')?>">Logout</a></li>
                     <?php $user=Session::get("utilizador");
-                    if($user->admin=1) { ?>
-                        <li><a href="<?= URL::toRoute('home/register')?>">Backoffice</a></li>
+                    if($user->admin==1) { ?>
+                        <li><a href="<?= URL::toRoute('backoffice/index2')?>">Backoffice</a></li>
                     <?php } ?>
                 <?php } else { ?>
                     <li><a href="<?= URL::toRoute('home/register')?>">Register</a></li>

@@ -117,6 +117,30 @@ class HomeController extends BaseController
         return view::make('backoffice.index');
     }
 
+    public function verifyloginbackoffice()
+    {
+        $dados=\ArmoredCore\WebObjects\Post::getAll();
+        $username=Post::get('username');
+        $password=Post::get('password');
+
+        $user= User::find_by_username($username);
+
+        if (password_verify($password, $user->password)) {
+
+            if ($user->ativacao == 1) {
+                Session::set("utilizador", $user);
+                \Tracy\Debugger::barDump(Session::get('utilizador'));
+            }
+        }
+        if($user->admin ==0) {
+            return Redirect::toRoute('backoffice/index');
+        }
+        if ($user->admin==1) {
+            return Redirect::toRoute('backoffice/index2');
+        }
+
+    }
+
     public function index2(){
         $registo = User::all();
         return View::make('backoffice.index2',['informacao' => $registo]);

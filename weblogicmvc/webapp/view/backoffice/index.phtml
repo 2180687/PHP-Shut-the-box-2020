@@ -26,17 +26,17 @@ Layout::includeLayout('indexheader');
 </div>
 <p>
     <br><br><br><br><br>
-<form>
+<form method="Post" action="<?= URL::toRoute('backoffice/index')?>">
     <div align="center">
         Username
-        <input type="text" name="Username" placeholder="John"/>
+        <input type="text" name="username" placeholder="John"/>
         <br><br>
 
         Password
-        <input type="password"name="Password" placeholder ="password"/>
+        <input type="password"name="password" placeholder ="password"/>
         <br><br>
         <input type="submit">
     </div>
-
+</form>
 </body>
 </html>
