@@ -10,12 +10,13 @@ use ArmoredCore\WebObjects\Asset;
 class GameController
 {
 
-public function game(){
-    $game= new Gameengine();
-    $game->tabuleiro->lancardado();
-    //Post::get('nomedaCheckbox')
-    Session::set("game",$game);
-    return View::make('jogo.play');
-}
+    public function game()
+    {
+        $game = new Gameengine();
+        $game->tabuleiro->lancardado();
+        //Post::get('nomedaCheckbox')
+        Session::set("game", $game);
+        return View::make('jogo.play');
+    }
 
 }

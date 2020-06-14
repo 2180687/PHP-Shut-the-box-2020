@@ -24,6 +24,8 @@ Router::get('home/logout','HomeController/logout');
 
 Router::post('home/registar', 'HomeController/registar');
 Router::post('home/verifylogin','HomeController/verifylogin');
+Router::get('home/perfil','HomeController/perfil');
+Router::post('home/perfil','HomeController/atualizarperfil');
 
 Router::get('backoffice/index','HomeController/backoffice');
 Router::post('backoffice/index','HomeController/verifyloginbackoffice');
@@ -35,6 +37,7 @@ Router::post('backoffice/editar','HomeController/update');
 Router::get('backoffice/destroy','Homecontroller/destroy');
 
 Router::get('jogo/play','GameController/game');
+Router::post('jogo/play2','GameController/mandardados');
 
 
 

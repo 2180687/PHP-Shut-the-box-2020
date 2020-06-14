@@ -1,0 +1,40 @@
+<?php use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\URL;
+
+
+Layout::includeLayout('header');
+    $registo= Data::get('informacao');
+    $user=Session::get("utilizador");
+    Tracy\Debugger::barDump($user);
+?>
+
+<div align="center">
+    <h1 class="page-title">Perfil</h1>
+
+</div>
+
+                            <form method="Post" action="<?= URL::toRoute('home/perfil')?>">
+                                Nome Completo
+                                <input type="text" value="<?=$registo->nomecompleto?>" name="nomecompleto" placeholder="John Smith" required/>
+                                <?= ErrMgr::bind('nomecompleto') ?>
+                                <br><br>
+                                Email
+                                <input type="email" value="<?=$registo->email?>" name="email" placeholder ="John@hotmail.com" required/>
+                                <?= ErrMgr::bind('email') ?>
+                                <br><br>
+
+                                Data Nascimento
+                                <input type="date" value="<?=$registo->datanascimento?>" name="data" required/>
+                                <?= ErrMgr::bind('datanascimento') ?>
+                                <br><br>
+
+                                Password
+                                <input type="password" name="password" placeholder ="password" required/>
+                                <br><br>
+
+                                <input type="submit" value="Atualizar">
+                            </form>
+
+
+
+<?php Layout::includeLayout('footer') ?>

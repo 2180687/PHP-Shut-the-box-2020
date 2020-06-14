@@ -141,6 +141,29 @@ class HomeController extends BaseController
 
     }
 
+    public function perfil()
+    {
+        //NAO SEI COMO PASSAR VALOR PARA AQUI NO UTILIZADOR QUE TEM O LOGIN ATUAL
+        session::get("utilizador", $user);
+
+        Tracy\Debugger::barDump($username);
+        return view::make('home.perfil',['informacao' => $registo]);
+    }
+
+    public function atualizarperfil()
+    {
+        $passwordhash = password_hash(Post::get('password'), PASSWORD_DEFAULT);
+        $registo = new User([
+            'nomecompleto' => Post::get('nomecompleto'),
+            'email' => Post::get('email'),
+            'datanascimento' => Post::get('data'),
+            'password' => $passwordhash
+        ]);
+        if ($registo->is_valid()) {
+            $registo->save();
+        }
+    }
+
     public function index2(){
         $registo = User::all();
         return View::make('backoffice.index2',['informacao' => $registo]);
