@@ -101,14 +101,13 @@ class HomeController extends BaseController
             \Tracy\Debugger::barDump(Session::get('utilizador'));
         }
     } else  {
-        //DAVA ERRO PELA PASSWORD SER DIFERENTE
         }
     return Redirect::toRoute('home/index');
 
     }
 
     public function logout(){
-       Session::destroy("utilizador");
+        Session::destroy("utilizador");
         Redirect::toRoute('home/index');
 
     }
