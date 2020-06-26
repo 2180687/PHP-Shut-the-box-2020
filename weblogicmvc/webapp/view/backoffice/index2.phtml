@@ -25,7 +25,7 @@ if($user->admin==0) {?>
         <h2 class="top-space"></h2>
         <div class="row">
             <div class="col-sm-12">
-                <table class="table table-striped"><thead><th><h3>Id</h3></th><th><h3>Name</h3></th><th><h3>Ativacao</h3></th><th><h3>User Actions</h3></th></thead>
+                <table class="table table-striped"><thead><th><h3>Id</h3></th><th><h3>Username</h3></th><th><h3>Ativacao</h3></th><th><h3>User Actions</h3></th></thead>
                     <tbody>
                     <?php foreach ($registos as $registo) { ?>
 
@@ -49,7 +49,10 @@ if($user->admin==0) {?>
 
             </div>
             <div class="col-sm-6">
-
+                <h3>Create a new User</h3>
+                <p>
+                    <a href="<?=Url::toRoute('backoffice/create')?>" class="btn btn-info" role="button">New</a>
+                </p>
             </div>
         </div> <!-- /row -->
 

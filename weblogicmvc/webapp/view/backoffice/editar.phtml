@@ -28,9 +28,23 @@ Layout::includeLayout('header') ?>
                         <form class="form-horizontal" method="post" action="<?=Url::toRoute('backoffice/editar', $registo->id)?>">
 
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="name">Name:<span class="text-danger">*</span></label>
+                                <label class="control-label col-sm-2" for="name">Nome Completo:<span class="text-danger">*</span></label>
                                 <div class="col-sm-6">
-                                    <input type="text" value="<?=$registo->username?>" class="form-control" required name="username" placeholder="Enter username">
+                                    <input type="text" value="<?=$registo->nomecompleto?>" class="form-control" required name="nomecompleto" placeholder="Enter Nome Completo">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="name">Email:<span class="text-danger">*</span></label>
+                                <div class="col-sm-6">
+                                    <input type="email" value="<?=$registo->email?>" class="form-control" required name="email" placeholder="Enter Email">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="name">Data Nascimento:<span class="text-danger">*</span></label>
+                                <div class="col-sm-6">
+                                    <input type="date" value="<?=$registo->datanascimento?>" class="form-control" required name="datanascimento" placeholder="Enter Data Nascimento">
                                 </div>
                             </div>
 
@@ -38,6 +52,12 @@ Layout::includeLayout('header') ?>
                                 <label class="control-label col-sm-2" for="name">Ativacao:<span class="text-danger">*</span></label>
                                 <div class="col-sm-6">
                                     <input type="text" required value="<?=$registo->ativacao?>" class="form-control" name="ativacao" placeholder="Enter Ativacao">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="name">Admin:<span class="text-danger">*</span></label>
+                                <div class="col-sm-6">
+                                    <input type="text" required value="<?=$registo->admin?>" class="form-control" name="admin" placeholder="Enter Admin">
                                 </div>
                             </div>
 

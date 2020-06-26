@@ -25,12 +25,33 @@ Layout::includeLayout('header') ?>
 							
 							<form method="post" action="<?=Url::toRoute('backoffice/index2')?>">
 								<div class="top-margin">
-									<label>Name <span class="text-danger">*</span></label>
+									<label>Username <span class="text-danger">*</span></label>
 									<input readonly="true" type="text" value="<?=$registo->username?>" name="name" class="form-control">
 								</div>
+
+                                <div class="top-margin">
+                                    <label>Nome Completo <span class="text-danger">*</span></label>
+                                    <input readonly="true" type="text" value="<?=$registo->nomecompleto?>" name="nomecompleto" class="form-control">
+                                </div>
+
+                                <div class="top-margin">
+                                    <label>Email <span class="text-danger">*</span></label>
+                                    <input readonly="true" type="email" value="<?=$registo->email?>" name="email" class="form-control">
+                                </div>
+
+                                <div class="top-margin">
+                                    <label>Data nascimento <span class="text-danger">*</span></label>
+                                    <input readonly="true" type="date" value="<?=$registo->datanascimento?>" name="datanascimento" class="form-control">
+                                </div>
+
 								<div class="top-margin">
 									<label>Ativacao <span class="text-danger">*</span></label>
 									<input readonly="true" type="text" value="<?=$registo->ativacao?>" name="ativacao" class="form-control">
+                                </div>
+
+                                <div class="top-margin">
+                                    <label>Admin<span class="text-danger">*</span></label>
+                                    <input readonly="true" type="text" value="<?=$registo->admin?>" name="admin" class="form-control">
                                 </div>
 
 								<hr>

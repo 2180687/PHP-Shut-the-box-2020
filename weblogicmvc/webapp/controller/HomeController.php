@@ -142,30 +142,74 @@ class HomeController extends BaseController
 
     public function perfil()
     {
-        //NAO SEI COMO PASSAR VALOR PARA AQUI NO UTILIZADOR QUE TEM O LOGIN ATUAL
-        session::get("utilizador", $user);
+        //$userAutenticado = vou ler a variavel de sessão do user autenticado //Session::get...
+        $userAutenticado=Session::get("utilizador");
+        //$user = a bd procurar por aquele userAutenticado //User::find($userAutenticado->id)
+        $user=User::find($userAutenticado->id);
+        if (is_null($user)) {
+            // redirect to standard error page
+        } else {
+            return view::make('home.perfil',['informacao' => $user]);
+        }
 
-        Tracy\Debugger::barDump($username);
-        return view::make('home.perfil',['informacao' => $registo]);
+
     }
 
-    public function atualizarperfil()
+
+
+    public function atualizarperfil() //a imitar o update
     {
+
+        $userAutenticado=Session::get("utilizador");
+        //$userAutenticado = vou ler a variavel de sessão do user autenticado //Session::get...
+
+        //$user = vou a bd procurar por aquele userAutenticado //User::find($userAutenticado->id)
+        $user=User::find($userAutenticado->id);
+        //ler o form
+        Tracy\Debugger::barDump($user);
         $passwordhash = password_hash(Post::get('password'), PASSWORD_DEFAULT);
-        $registo = new User([
-            'nomecompleto' => Post::get('nomecompleto'),
-            'email' => Post::get('email'),
-            'datanascimento' => Post::get('data'),
-            'password' => $passwordhash
-        ]);
-        if ($registo->is_valid()) {
-            $registo->save();
+
+        $user->nomecompleto = Post::get('nomecompleto');
+        $user->email = Post::get('email');
+        $user->datanascimento = Post::get('data');
+        $user->password= $passwordhash;
+
+
+        if($user->is_valid()){
+            $user->save();
+            Redirect::toRoute('home/index');
+        } else {
+            // return form with data and errors
+            Redirect::flashToRoute('home/perfil', ['informacao' => $user], $id);
         }
     }
 
     public function index2(){
         $registo = User::all();
         return View::make('backoffice.index2',['informacao' => $registo]);
+    }
+    public function create()
+    {
+        View::make('backoffice.create');
+    }
+
+    /**
+     * @return mixed
+     */
+    public function store()
+    {
+        // create new resource (activerecord/model) instance
+        // your form name fields must match the ones of the table fields
+        $registo = new User(Post::getAll());
+
+
+        if($registo->is_valid()){
+            $registo->save();
+            Redirect::toRoute('backoffice/index2');
+        } else {
+            // return form with data and errors
+            Redirect::flashToRoute('backoffice/create', ['informacao' => $registo]);
+        }
     }
 
     public function show($id)

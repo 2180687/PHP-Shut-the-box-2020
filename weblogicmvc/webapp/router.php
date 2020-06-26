@@ -31,6 +31,8 @@ Router::get('backoffice/index','HomeController/backoffice');
 Router::post('backoffice/index','HomeController/verifyloginbackoffice');
 Router::get('backoffice/index2','HomeController/index2');
 Router::get('backoffice/show','HomeController/show');
+Router::get('backoffice/create','HomeController/create');
+Router::post('backoffice/create','HomeController/store');
 
 Router::get('backoffice/editar','HomeController/editar');
 Router::post('backoffice/editar','HomeController/update');

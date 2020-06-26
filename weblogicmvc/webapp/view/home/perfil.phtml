@@ -1,17 +1,20 @@
 <?php use ArmoredCore\WebObjects\Layout;
 use ArmoredCore\WebObjects\URL;
-
+use ArmoredCore\WebObjects\Data;
+use ArmoredCore\WebObjects\Session;
+use ArmoredCore\WebObjects\ErrMgr;
 
 Layout::includeLayout('header');
-    $registo= Data::get('informacao');
-    $user=Session::get("utilizador");
-    Tracy\Debugger::barDump($user);
+$registo = Data::get('informacao') ?>
+<?php ErrMgr::attach($registo)?>
+
+<?php  Tracy\Debugger::barDump($registo);
 ?>
 
 <div align="center">
     <h1 class="page-title">Perfil</h1>
 
-</div>
+
 
                             <form method="Post" action="<?= URL::toRoute('home/perfil')?>">
                                 Nome Completo
@@ -29,11 +32,15 @@ Layout::includeLayout('header');
                                 <br><br>
 
                                 Password
-                                <input type="password" name="password" placeholder ="password" required/>
+                                <input type="password" value="<?=$registo->password?>" name="password" required/>
+                                <?= ErrMgr::bind('password') ?>
                                 <br><br>
+
+
 
                                 <input type="submit" value="Atualizar">
                             </form>
+</div>
 
 
 
