@@ -4,46 +4,44 @@ use ArmoredCore\WebObjects\Session;
 use ArmoredCore\WebObjects\Asset;
 use ArmoredCore\WebObjects\URL;
 ?>
-<form>
-1<input type="checkbox" value="1"
-<p>
+<form method="post" action="<?= URL::toRoute('jogo/blockNumber') ?>">
+    <link rel="stylesheet" href="<?= Asset::css('/main.css')?>" media="screen" >
+    <!-- buscar o jogo à sessão e percorre -->
+    <span>
+    <h1>Jogador 1</h1>
+    <h1 class="Jogador2text">Jogador 2</h1>
+
+1<input type="checkbox" name="1" value="1">
+    <input type="checkbox" name="1" class="Jogador2" value="1">1
 <br>
+2<input type="checkbox" name="2" value="2">
+    <input type="checkbox" name="1" class="Jogador2" value="2">2
 <br>
-2<input type="checkbox" value="2"
-<p>
+3<input type="checkbox" name="3" value="3">
+        <input type="checkbox" name="1" class="Jogador2" value="3">3
 <br>
+4<input type="checkbox" name="4" value="4">
+        <input type="checkbox" class="Jogador2" name="4" value="4">4
 <br>
-3<input type="checkbox" value="3"
-<p>
+5<input type="checkbox" name="5" value="5">
+        <input type="checkbox" class="Jogador2" name="5" value="5">5
 <br>
+6<input type="checkbox" name="6" value="6">
+        <input type="checkbox" class="Jogador2" name="6" value="6">6
 <br>
-4<input type="checkbox" value="4"
-<p>
+7<input type="checkbox" name="7" value="7">
+        <input type="checkbox" class="Jogador2" name="7" value="7">7
 <br>
+8<input type="checkbox" name="8" value="8">
+        <input type="checkbox" class="Jogador2" name="8" value="8">8
 <br>
-5<input type="checkbox" value="5"
-<p>
+9<input type="checkbox" name="9" value="9">
+        <input type="checkbox"  class="Jogador2" name="9" value="9">9
 <br>
-<br>
-6<input type="checkbox" value="6"
-<p>
-<br>
-<br>
-7<input type="checkbox" value="7"
-<p>
-<br>
-<br>
-8<input type="checkbox" value="8"
-<p>
-<br>
-<br>
-9<input type="checkbox" value="9"
-<form>
-<br>
-<br>
-    <input type="button" value="Acabar turno">
+    <input type="submit" value="Acabar turno">
+
+        <input type="submit" class="Jogador2button" value="Acabar turno">
 </form>
-<div align="center">
 
 
 
@@ -51,14 +49,19 @@ use ArmoredCore\WebObjects\URL;
 
 $game=Session::get("game");
 
-?> <img src="<?=Asset::image('Dice'.$game->tabuleiro->resultadoDado1.'.png')?>"
-        <br>
-    <img src="<?=Asset::image('Dice'.$game->tabuleiro->resultadoDado2.'.png')?>"
-         <br>
-    <h2> A Soma dos dados é <?=$game->tabuleiro->resultadoDado1+$game->tabuleiro->resultadoDado2?></h2>
+?>
+    <div class="Dadosvisual">
+    <form>
+        <img src="<?=Asset::image('Dice'.$game->tabuleiro->resultadoDado1.'.png')?>"
+            <br>
+        <img src="<?=Asset::image('Dice'.$game->tabuleiro->resultadoDado2.'.png')?>"
+             <br>
+        <h2> A Soma dos dados é <?=$game->tabuleiro->resultadoDado1+$game->tabuleiro->resultadoDado2?></h2>
 
-    <input type="submit" name="teste"  value="Lançar dados">
-</div align="center">
+        <input type="submit" name="teste"  value="Lançar dados">
+    </form>
+    </div>
+
 <?php
 //Tracy\Debugger::barDump($valor);
 ?>
