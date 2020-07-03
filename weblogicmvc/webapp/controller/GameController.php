@@ -27,10 +27,12 @@ class GameController
     //isto implica fazer uma rota e configurar o form como deve de ser
     public function lancarDado(){
         //ler a sessão
+        Session::get("game");
         //lançar o dado
-
-
+        $game = new Gameengine();
+        $game->tabuleiro->lancardado();
         //return da view
+        return View::make('jogo.play');
     }
 
     public function blockNumber(){
