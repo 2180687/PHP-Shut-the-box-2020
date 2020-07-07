@@ -1,5 +1,5 @@
 <?php
-
+use ArmoredCore\WebObjects\Session;
 class Tabuleiro
 {
     private $dado;
@@ -81,13 +81,24 @@ $SomaP1=$this->numerosBloqueadosP1->somaNumerosAtivos();
            // $vitorias=Post::get('Vitorias');
             //$vitorias+=1;
             //new Game()
+            $utilizador=Session::get('utilizador');
+
             $pontuacaojogo = new Game([
-                'pontos'
+                'user_id' => $utilizador->id,
+                'data'=> date('Y-m-d'),
+                'pontos'=> $pontossoma
                 ]);
+            Tracy\Debugger::barDump($pontuacaojogo,'pontuacaojogo');
+        if ($pontuacaojogo->is_valid())
+        {
+            $pontuacaojogo->save();
+        }
             \Tracy\Debugger::barDump($pontossoma);
            // $pontos->save();
             //$vitorias->save();
-        }
+        return $pontossoma;
+
+    }
 
 
         //isto só interessa caso o vencecdor seja o jogador humano

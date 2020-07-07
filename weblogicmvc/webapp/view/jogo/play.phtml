@@ -4,63 +4,65 @@ use ArmoredCore\WebObjects\Session;
 use ArmoredCore\WebObjects\Asset;
 use ArmoredCore\WebObjects\URL;
 ?>
-<form method="post" action="<?= URL::toRoute('jogo/blockNumber') ?>">
-    <link rel="stylesheet" href="<?= Asset::css('/main.css')?>" media="screen" >
-    <!-- buscar o jogo à sessão e percorre -->
-    <span>
-    <h1>Jogador 1</h1>
-    <h1 class="Jogador2text">Jogador 2</h1>
-
-1<input type="checkbox" name="1" value="1">
-    <input type="checkbox" name="1" class="Jogador2" value="1">1
-<br>
-2<input type="checkbox" name="2" value="2">
-    <input type="checkbox" name="1" class="Jogador2" value="2">2
-<br>
-3<input type="checkbox" name="3" value="3">
-        <input type="checkbox" name="1" class="Jogador2" value="3">3
-<br>
-4<input type="checkbox" name="4" value="4">
-        <input type="checkbox" class="Jogador2" name="4" value="4">4
-<br>
-5<input type="checkbox" name="5" value="5">
-        <input type="checkbox" class="Jogador2" name="5" value="5">5
-<br>
-6<input type="checkbox" name="6" value="6">
-        <input type="checkbox" class="Jogador2" name="6" value="6">6
-<br>
-7<input type="checkbox" name="7" value="7">
-        <input type="checkbox" class="Jogador2" name="7" value="7">7
-<br>
-8<input type="checkbox" name="8" value="8">
-        <input type="checkbox" class="Jogador2" name="8" value="8">8
-<br>
-9<input type="checkbox" name="9" value="9">
-        <input type="checkbox"  class="Jogador2" name="9" value="9">9
-<br>
-    <input type="submit" value="Acabar turno">
-
-        <input type="submit" class="Jogador2button" value="Acabar turno">
-</form>
-
-
-
 <?php
-
 $game=Session::get("game");
-
+//PASAR COM DATA
 ?>
-    <div class="Dadosvisual">
-    <form>
+<?php
+if ($game->getEstadoJogo()==1) {
+    ?>
+    <link rel="stylesheet" href="<?= Asset::css('/main.css') ?>" media="screen">
+    <h1>Jogador1</h1>
+    <a href="<?= URL::toRoute('jogo/blockNumber', 1) ?>"> 1</a>
+    <a href="<?= URL::toRoute('jogo/blockNumber', 2) ?>"> 2</a>
+    <a href="<?= URL::toRoute('jogo/blockNumber', 3) ?>"> 3</a>
+    <a href="<?= URL::toRoute('jogo/blockNumber', 4) ?>"> 4</a>
+    <a href="<?= URL::toRoute('jogo/blockNumber', 5) ?>"> 5</a>
+    <a href="<?= URL::toRoute('jogo/blockNumber', 6) ?>"> 6</a>
+    <a href="<?= URL::toRoute('jogo/blockNumber', 7) ?>"> 7</a>
+    <a href="<?= URL::toRoute('jogo/blockNumber', 8) ?>"> 8</a>
+    <a href="<?= URL::toRoute('jogo/blockNumber', 9) ?>"> 9</a>
+    <a href="<?= URL::toRoute('jogo/terminarjogadaP1') ?>">Passar Jogador</a>
+    <?php
+}
+?>
+<?php
+if ($game->getEstadoJogo()==2) {
+    ?>
+    <h1>Jogador2</h1><!--FAZER IFS PARA TIRAR DE "LINK" Mostrar so numero sem link-->
+    <a href="<?= URL::toRoute('jogo/blockNumber2', 1) ?>"> 1</a>
+    <a href="<?= URL::toRoute('jogo/blockNumber2', 2) ?>"> 2</a>
+    <a href="<?= URL::toRoute('jogo/blockNumber2', 3) ?>"> 3</a>
+    <a href="<?= URL::toRoute('jogo/blockNumber2', 4) ?>"> 4</a>
+    <a href="<?= URL::toRoute('jogo/blockNumber2', 5) ?>"> 5</a>
+    <a href="<?= URL::toRoute('jogo/blockNumber2', 6) ?>"> 6</a>
+    <a href="<?= URL::toRoute('jogo/blockNumber2', 7) ?>"> 7</a>
+    <a href="<?= URL::toRoute('jogo/blockNumber2', 8) ?>"> 8</a>
+    <a href="<?= URL::toRoute('jogo/blockNumber2', 9) ?>"> 9</a>
+    <a href="<?= URL::toRoute('jogo/terminarjogo') ?>">Terminar Jogo</a>
+    <?php
+}
+if ($game->getEstadoJogo()==3) {
+    echo 'O vencedor é o jogador'.$game->tabuleiro->getVencedor();
+    echo 'Ganhou com'.$game->tabuleiro->getPointsVencedor();
+}
+?>
+    <form method="post" action="<?= URL::toRoute('jogo/lancardado')?>">
         <img src="<?=Asset::image('Dice'.$game->tabuleiro->resultadoDado1.'.png')?>"
+        <?=$game->tabuleiro->resultadoDado1
+        ?>
             <br>
         <img src="<?=Asset::image('Dice'.$game->tabuleiro->resultadoDado2.'.png')?>"
+        <?=$game->tabuleiro->resultadoDado2
+        ?>
              <br>
+
         <h2> A Soma dos dados é <?=$game->tabuleiro->resultadoDado1+$game->tabuleiro->resultadoDado2?></h2>
 
         <input type="submit" name="teste"  value="Lançar dados">
+
     </form>
-    </div>
+
 
 <?php
 //Tracy\Debugger::barDump($valor);

@@ -7,20 +7,20 @@ public $tabuleiro;
 private $estadojogo;
 
 
-    public function __construct(){
-        $this->tabuleiro= new Tabuleiro();
-    }
-
     public function iniciarjogo(){
-
+        $this->tabuleiro= new Tabuleiro();
+        //colocar o estado do jogo com um valor inicial. (1)
+        $this->estadojogo=1;
     }
 
     public function getEstadoJogo(){
-
+        //apenas devolve a variavel estado do jogo
+        return $this->estadojogo;
     }
 
-    public function updateEstadoJogo(){
-
+    public function updateEstadoJogo( $estadojogo){
+        //altera a variavel estadoJogo de acordo com a variavel recebida por parametro
+        $this->estadojogo=$estadojogo;
     }
 
 

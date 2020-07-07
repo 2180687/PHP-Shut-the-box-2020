@@ -93,17 +93,16 @@ class HomeController extends BaseController
     $password=Post::get('password');
 
     $user= User::find_by_username($username);
-        if (is_null($user)) {
-            Redirect::toRoute('home/login');
-        }
+    if (is_null($user)) {
+        return Redirect::toRoute('home/login');
+    }
     if (password_verify($password, $user->password)) {
 
         if ($user->ativacao == 1) {
             Session::set("utilizador", $user);
             \Tracy\Debugger::barDump(Session::get('utilizador'));
         }
-    } else  {
-        }
+    }
     return Redirect::toRoute('home/index');
 
     }

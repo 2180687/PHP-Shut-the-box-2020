@@ -41,7 +41,12 @@ Router::get('backoffice/destroy','Homecontroller/destroy');
 Router::get('jogo/play','GameController/game');
 Router::post('jogo/play2','GameController/mandardados');
 
-Router::post('jogo/blockNumber','GameController/blockNumber');
+Router::get('jogo/blockNumber','GameController/blockNumber');
+Router::post('jogo/lancardado','Gamecontroller/lancarDado');
+Router::get('jogo/terminarjogadaP1','Gamecontroller/terminarjogadaP1');
+Router::get('jogo/blockNumber2','Gamecontroller/blockNumber2');
+Router::get('jogo/terminarjogo','Gamecontroller/terminarjogo');
+
 
 
 

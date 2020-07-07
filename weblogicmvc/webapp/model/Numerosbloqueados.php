@@ -24,78 +24,70 @@ class Numerosbloqueados
 
 
 
-    public function bloquearNumero($numeroEscolhido,$somaDados){
-        //colocar os numeros a true
-        //somaDados = 7
-        //numeroEscolhido = [2,5]
-        $valor=0;
-        foreach($numeroEscolhido as $numero){
-            \Tracy\Debugger::barDump($numero, "Dentro do NumerosBloqueado, primeiro foreach");
-            //$numero = 5
-            /*if ($numero<$somaDados)
-            {
-                $valor += $numero;
-                continue;
-            }
-            else if ($numero>$somaDados)
-            {
-                return false;
-            }
-            else {
-                $numerosBloqueados[$numero] = true;
-            }*/
-            if($numero<=$somaDados){
-                $valor+=$numero;
-            }
-        }
-        \Tracy\Debugger::barDump($valor, "Soma dos numerosEscolhidos");
-        if($valor==$somaDados){
-            foreach ($numeroEscolhido as $n){
-                $this->numerosBloqueados[$n] = true;
-            }
-            \Tracy\Debugger::barDump($this->numerosBloqueados, "Dentro do NumerosBloqueado, primeiro foreach");
-            return true;
-        }else {
-            \Tracy\Debugger::barDump("Dentro do NumerosBloqueado, no else");
-            return false;
+    public function bloquearNumero($numeroEscolhido){
+        \Tracy\Debugger::barDump($numeroEscolhido);
+        $this->numerosBloqueados[$numeroEscolhido]=true;
+        \Tracy\Debugger::barDump($this->numerosBloqueados);
+
         }
 
-    }
+
 
 
     public function checkFinalJogada($somaDados,$numerosBloqueados)
     {
 
+//FAZER CICLO PERCORRENDO SO COM 1 ver se algum valor faça o total dos
+// dados dps outro ciclo percorrendo 2
+// fazendo 2 a 2 usando o bloqueio numeros dps 3 em 3 e dps em 4
 
+        //PARA 1 NUMERO SELECONADO
+        For ($i=1; $i<=9; $i++) {
+            if ($i == $somaDados and $i <> $numerosBloqueados) {
+                return true;
+            }
 
-        //CODIGO PARA A SOMA DOS NUMEROS DAR A VARIAVEL $somadado
-        if ($somaDados==1){
 
         }
-        if ($somaDados==2){
 
-        }
-        if ($somaDados==3){
+        //PARA 2 NUMEROS SELECIONADOS
+        For ($i=1; $i<=9; $i++){
+            For ($i2=1;$i2<=9; $i2++){
+                if ($i <>$numerosBloqueados and $i2 <>$numerosBloqueados) {
+                    $totalvalor = $i + $i2;
+                }
+                    if ($totalvalor == $somaDados){
+                        return true;
+                    }
 
-        }
-        if ($somaDados==4){
 
+            }
         }
-        if ($somaDados==5){
+            //CODIGO PARA A SOMA DOS NUMEROS DAR A VARIAVEL $somadado
+            if ($somaDados == 2) {
 
-        }
-        if ($somaDados==6){
+            }
+            if ($somaDados == 3) {
 
-        }
-        if ($somaDados==7){
+            }
+            if ($somaDados == 4) {
 
-        }
-        if ($somaDados==8){
+            }
+            if ($somaDados == 5) {
 
-        }
-        if ($somaDados==9){
+            }
+            if ($somaDados == 6) {
 
-        }
+            }
+            if ($somaDados == 7) {
+
+            }
+            if ($somaDados == 8) {
+
+            }
+            if ($somaDados == 9) {
+
+            }
 
         //SOMA OS NUMEROS DO JOGADOR 1
        /* if ($Jogador1==true) {
