@@ -63,6 +63,35 @@ class Numerosbloqueados
 
             }
         }
+        //PARA 3 NUMEROS SELECIONADOS
+        For ($i=1; $i<=9; $i++) {
+            For ($i2 = 1; $i2 <= 9; $i2++) {
+                 For ($i3 = 1; $i3 <= 9; $i3++) {
+                    if ($i <> $numerosBloqueados and $i2 <> $numerosBloqueados and $i3 <> $numerosBloqueados) {
+                $totalvalor = $i + $i2 + $i3;
+                    }
+                    if ($totalvalor == $somaDados) {
+                        return true;
+                     }
+                }
+            }
+        }
+
+        //PARA 4 NUMEROS SELECIONADOS
+        For ($i=1; $i<=9; $i++) {
+            For ($i2 = 1; $i2 <= 9; $i2++) {
+                For ($i3 = 1; $i3 <= 9; $i3++) {
+                    for ($i4 = 1; $i4 <= 9; $i4++) {
+                        if ($i <> $numerosBloqueados and $i2 <> $numerosBloqueados and $i3 <> $numerosBloqueados and $i4<>$numerosBloqueados) {
+                            $totalvalor = $i + $i2 + $i3+ $i4;
+                        }
+                        if ($totalvalor == $somaDados) {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
             //CODIGO PARA A SOMA DOS NUMEROS DAR A VARIAVEL $somadado
             if ($somaDados == 2) {
 
