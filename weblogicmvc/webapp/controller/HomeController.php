@@ -55,7 +55,7 @@ class HomeController extends BaseController
     }
 
     public function registar(){
-        \Tracy\Debugger::barDump(Post::getAll());
+
         $passwordhash = password_hash(Post::get('password'), PASSWORD_DEFAULT);
         $registo = new User([
             'username' => Post::get('username'),
@@ -75,8 +75,7 @@ class HomeController extends BaseController
 
     public function highscores(){
         $pontuacao=Game::find('all',  array('order' => 'pontos desc', 'limit' => 10));
-        //foreach ($teste as $t)
-        //\Tracy\Debugger::barDump($t->users->username);
+
         return View::make('home.highscores',['pontos' => $pontuacao]);
     }
 
@@ -100,7 +99,6 @@ class HomeController extends BaseController
 
         if ($user->ativacao == 1) {
             Session::set("utilizador", $user);
-            \Tracy\Debugger::barDump(Session::get('utilizador'));
         }
     }
     return Redirect::toRoute('home/index');
@@ -129,7 +127,7 @@ class HomeController extends BaseController
 
             if ($user->ativacao == 1) {
                 Session::set("utilizador", $user);
-                \Tracy\Debugger::barDump(Session::get('utilizador'));
+
             }
         }
         if($user->admin ==0) {
@@ -143,9 +141,8 @@ class HomeController extends BaseController
 
     public function perfil()
     {
-        //$userAutenticado = vou ler a variavel de sessão do user autenticado //Session::get...
         $userAutenticado=Session::get("utilizador");
-        //$user = a bd procurar por aquele userAutenticado //User::find($userAutenticado->id)
+
         $user=User::find($userAutenticado->id);
         if (is_null($user)) {
             // redirect to standard error page
@@ -162,12 +159,12 @@ class HomeController extends BaseController
     {
 
         $userAutenticado=Session::get("utilizador");
-        //$userAutenticado = vou ler a variavel de sessão do user autenticado //Session::get...
+        //$userAutenticado = vou ler a variavel de sessão do user autenticado
 
-        //$user = vou a bd procurar por aquele userAutenticado //User::find($userAutenticado->id)
+        //$user = vou a bd procurar por aquele userAutenticado
         $user=User::find($userAutenticado->id);
         //ler o form
-        Tracy\Debugger::barDump($user);
+
         $passwordhash = password_hash(Post::get('password'), PASSWORD_DEFAULT);
 
         $user->nomecompleto = Post::get('nomecompleto');
@@ -217,7 +214,6 @@ class HomeController extends BaseController
     {
         $registo = User::find($id);
 
-        \Tracy\Debugger::barDump($registo);
 
         if (is_null($registo)) {
             // redirect to standard error page

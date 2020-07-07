@@ -47,40 +47,19 @@ class Tabuleiro
         }
         return $vencedor;
 
-        //quem tiver a soma de desbloqueados menor
+        //quem tiver a soma de desbloqueados menor é o vencedor
     }
 
     //GUARDA OS PONTOS DO VENCEDOR e ADICIONA 1 VITORIA
     public function getPointsVencedor(){
 
+    //subtração dos  desbloqueados (somaNumerosAtivos) do P2 com os desbloqueados (somaNumerosAtivos) do P1
 
+    $SomaP2=$this->numerosBloqueadosP2->somaNumerosAtivos();
+    $SomaP1=$this->numerosBloqueadosP1->somaNumerosAtivos();
 
-       // $this->game->$pontos;
-/*
-        if ($Vencedor==2)
-        {
-            $pontossoma=$somaP2-$SomaP1;
-            $pontos= Post::get('pontos');
-            $pontos+=$pontossoma;
-            $vitorias=Post::get('Vitorias');
-            $vitorias+=1;
-            $pontos->save();
-            $vitorias->save();
-
-        }
-        if ($Vencedor==1)
-        {*/
-            //subtração dos  desbloqueados (somaNumerosAtivos) do P2 com os desbloqueados (somaNumerosAtivos) do P1
-
-$SomaP2=$this->numerosBloqueadosP2->somaNumerosAtivos();
-$SomaP1=$this->numerosBloqueadosP1->somaNumerosAtivos();
-            //$Game->$pontos;
             $pontossoma=$SomaP1-$SomaP2;
-           // $pontos= Post::get('pontos');
-           // $pontos+=$pontossoma;
-           // $vitorias=Post::get('Vitorias');
-            //$vitorias+=1;
-            //new Game()
+
             $utilizador=Session::get('utilizador');
 
             $pontuacaojogo = new Game([
@@ -88,22 +67,14 @@ $SomaP1=$this->numerosBloqueadosP1->somaNumerosAtivos();
                 'data'=> date('Y-m-d'),
                 'pontos'=> $pontossoma
                 ]);
-            Tracy\Debugger::barDump($pontuacaojogo,'pontuacaojogo');
+
         if ($pontuacaojogo->is_valid())
         {
             $pontuacaojogo->save();
         }
-            \Tracy\Debugger::barDump($pontossoma);
-           // $pontos->save();
-            //$vitorias->save();
         return $pontossoma;
 
     }
-
-
-        //isto só interessa caso o vencecdor seja o jogador humano
-        //pontos do vencedor = subtrair a soma dos desbloqueados do PC com a soma dos desbloqueados do humano
-        //é estes pontos que deve colocar na Base de Dados (controlador)
 
 
 }

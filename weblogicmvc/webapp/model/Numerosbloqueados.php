@@ -25,9 +25,9 @@ class Numerosbloqueados
 
 
     public function bloquearNumero($numeroEscolhido){
-        \Tracy\Debugger::barDump($numeroEscolhido);
+
         $this->numerosBloqueados[$numeroEscolhido]=true;
-        \Tracy\Debugger::barDump($this->numerosBloqueados);
+
 
         }
 
@@ -92,56 +92,6 @@ class Numerosbloqueados
                 }
             }
         }
-            //CODIGO PARA A SOMA DOS NUMEROS DAR A VARIAVEL $somadado
-            if ($somaDados == 2) {
-
-            }
-            if ($somaDados == 3) {
-
-            }
-            if ($somaDados == 4) {
-
-            }
-            if ($somaDados == 5) {
-
-            }
-            if ($somaDados == 6) {
-
-            }
-            if ($somaDados == 7) {
-
-            }
-            if ($somaDados == 8) {
-
-            }
-            if ($somaDados == 9) {
-
-            }
-
-        //SOMA OS NUMEROS DO JOGADOR 1
-       /* if ($Jogador1==true) {
-            if ($somaDados > $numerosBloqueados) {
-                $this->somaNumerosAtivos();
-            }
-
-            else
-            {
-                $this->tabuleiro->checkFinalJogadaP1();
-            }
-        }
-        // SOMA OS NUMEROS DO JOGADOR 2
-        if ($Jogador2==true) {
-            if ($somaDados > $numerosBloqueados)
-            {
-                $this->somaNumerosAtivos();
-            }
-            else
-                {
-                    $this->tabuleiro->numerosBloqueadosP2();
-                }
-            //consoante os numeros que tenho desbloqueados e a soma dos dados verificar se ainda é possivel jogar.
-
-        }*/
 
 
     }
@@ -150,9 +100,9 @@ class Numerosbloqueados
     {
         $soma=0;
         foreach($this->numerosBloqueados as $numeroblock => $num_value) {
-            \Tracy\Debugger::barDump($numeroblock, 'numeroBlock');
+
             if ($num_value == false) {
-                \Tracy\Debugger::barDump($soma, 'soma dos numeros desbloqueados');
+
                 $soma += $numeroblock;
             }
         }
