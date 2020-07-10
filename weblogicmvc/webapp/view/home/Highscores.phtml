@@ -26,20 +26,35 @@ $pontuacao= Data::get('pontos')
  
  <div align="center">
  <h1> Highscores </h1>
-
+     <table width="25%">
+        <tr>
+         <th>Username</th>
+         <th>Pontos</th>
+        </tr>
+     </table>
      <?php
      $i=10;
 
      foreach ($pontuacao as $p) {
 
          ?>
+         <table width="23%">
 
-     <span style="margin-left"></span><b>Username</b></span>
-     <?=$p->users->username?> -
-             <span style="margin-right"><b>Pontos</b></span>
-             <?=$p->pontos?>
+             <tr>
+                 <td><?=$p->users->username?> </td>
+                 <td><?=$p->pontos?></td>
+                 <hr style="width:25%;">
+             </tr>
+         </table>
+    <!-- <table>
+         <tr>
+             <th> <span style="margin-left"></span><b>Username</b></span></th>
+         </tr>
+         <td><//?=$p->users->username?></td> -
+         <th> <span style="margin-right"><b>Pontos</b></span></th>
+         <td><//?=$p->pontos?></td>
             <br>
-
+     </table>-->
 
            <?php } ?>
      <?php

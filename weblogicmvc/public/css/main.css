@@ -81,8 +81,11 @@ img.pull-left { margin-right: 10px; }
 	.widget-simplenav { margin-left:-5px; }		
 	.widget-simplenav a{ margin:0 5px; }
 
-	.Jogador2 {margin-left: 1350px;margin-top: 50px}
+	.Jogador1 {text-align: center;margin-top: 50px}
+	.Jogador2 {margin-left: 700px;margin-top: 50px}
 	.Jogador2text {margin-left: 1300px; margin-top:-50px;}
 	.Jogador2button{margin-left:1250px;}
 
-	.Dadosvisual{margin-top:-500px;text-align:center;}
+	.Dadosvisual{text-align:center;margin-top:50px;}
+
+

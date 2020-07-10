@@ -35,6 +35,7 @@ class GameController
         $game=Session::get("game");
         $game->updateEstadoJogo(2);
         Session::set("game", $game);
+
         return View::make('jogo.play',['jogo' => $game]);
     }
 
@@ -52,12 +53,14 @@ class GameController
         Session::set("game", $game);
         return View::make('jogo.play',['jogo' => $game]);
     }
-    public function blockNumber($numero){
-        $jogosessao=Session::get("game");
 
-        $jogosessao->tabuleiro->numerosBloqueadosP1->bloquearNumero($numero);
+    public function blockNumber($numero/**,$numerosBloqueados**/){
+        $game=Session::get("game");
 
-        return View::make('jogo.play');
+        $game->tabuleiro->numerosBloqueadosP1->bloquearNumero($numero);
+        //$game->tabuleiro->numerosBloqueadosP1->checkFinalJogada($numero,$numerosBloqueados);
+        Session::set("game", $game);
+        return View::make('jogo.play',['jogo' => $game]);
     }
 
 }

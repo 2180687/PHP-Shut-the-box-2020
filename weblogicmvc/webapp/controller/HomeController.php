@@ -125,7 +125,7 @@ class HomeController extends BaseController
 
         if (password_verify($password, $user->password)) {
 
-            if ($user->ativacao == 1) {
+            if ($user->ativacao == 1 and $user->admin==1) {
                 Session::set("utilizador", $user);
 
             }
@@ -133,9 +133,9 @@ class HomeController extends BaseController
         if($user->admin ==0) {
             return Redirect::toRoute('backoffice/index');
         }
-        if ($user->admin==1) {
-            return Redirect::toRoute('backoffice/index2');
-        }
+       if (Session::has('utilizador')){
+           return Redirect::toRoute('backoffice/index2');
+       }
 
     }
 

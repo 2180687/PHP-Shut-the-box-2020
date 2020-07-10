@@ -47,6 +47,10 @@ Router::get('jogo/terminarjogadaP1','Gamecontroller/terminarjogadaP1');
 Router::get('jogo/blockNumber2','Gamecontroller/blockNumber2');
 Router::get('jogo/terminarjogo','Gamecontroller/terminarjogo');
 
+Router::post('jogo/terminarjogo','GameController/game');
+
+
+
 
 
 

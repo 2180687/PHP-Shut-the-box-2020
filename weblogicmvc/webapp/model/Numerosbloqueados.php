@@ -3,7 +3,7 @@
 
 class Numerosbloqueados
 {
-    private $numerosBloqueados; /*TEM QUE SER ARRAY*/
+    public $numerosBloqueados; /*TEM QUE SER ARRAY*/
 
     /*  Array associativo
      * ['chave' => 'valor', '1' => 'false', '2' => 'true']

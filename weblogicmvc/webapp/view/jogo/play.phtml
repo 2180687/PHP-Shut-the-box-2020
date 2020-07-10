@@ -4,107 +4,124 @@ use ArmoredCore\WebObjects\Session;
 use ArmoredCore\WebObjects\Asset;
 use ArmoredCore\WebObjects\URL;
 use ArmoredCore\WebObjects\Data;
+use ArmoredCore\WebObjects\Layout;
 ?>
 <?php
-$game=Session::get("game");
-$datagame=Data::get("jogo"); //DUVIDA SE PASSAR COM DATA::GET O SESSAO TA AQUI A FAZER ALGUMA COISA?
+Layout::includeLayout('header');
+$game=Data::get("jogo"); //DUVIDA SE PASSAR COM DATA::GET O SESSAO TA AQUI A FAZER ALGUMA COISA?
 
 
 ?>
+<div class="Jogador1">
 <?php
+echo "<h4>Jogador1: ".$game->tabuleiro->numerosBloqueadosP1->somaNumerosAtivos()."</h4>";
+echo "<h4>Jogador2: ".$game->tabuleiro->numerosBloqueadosP2->somaNumerosAtivos(),"<h4><br>";
 if ($game->getEstadoJogo()==1) {
     ?>
     <link rel="stylesheet" href="<?= Asset::css('/main.css') ?>" media="screen">
     <h1>Jogador1</h1>
     <?php if($game->tabuleiro->numerosBloqueadosP1->numerosBloqueados[1]==false){ ?>
     <a href="<?= URL::toRoute('jogo/blockNumber', 1) ?>"> 1</a>
-        <?php } else echo 1?>
+        <?php } else echo "1";?>
     <br>
     <?php if($game->tabuleiro->numerosBloqueadosP1->numerosBloqueados[2]==false){ ?>
     <a href="<?= URL::toRoute('jogo/blockNumber', 2) ?>"> 2</a>
-    <?php } else echo 2?>
+    <?php } else echo "2";?>
     <br>
     <?php if($game->tabuleiro->numerosBloqueadosP1->numerosBloqueados[3]==false){ ?>
     <a href="<?= URL::toRoute('jogo/blockNumber', 3) ?>"> 3</a>
-    <?php } else echo 3?>
+    <?php } else echo "3";?>
     <br>
     <?php if($game->tabuleiro->numerosBloqueadosP1->numerosBloqueados[4]==false){ ?>
     <a href="<?= URL::toRoute('jogo/blockNumber', 4) ?>"> 4</a>
-    <?php } else echo 4?>
+    <?php } else echo "4";?>
     <br>
     <?php if($game->tabuleiro->numerosBloqueadosP1->numerosBloqueados[5]==false){ ?>
     <a href="<?= URL::toRoute('jogo/blockNumber', 5) ?>"> 5</a>
-    <?php } else echo 5?>
+    <?php } else echo "5";?>
     <br>
     <?php if($game->tabuleiro->numerosBloqueadosP1->numerosBloqueados[6]==false){ ?>
     <a href="<?= URL::toRoute('jogo/blockNumber', 6) ?>"> 6</a>
-    <?php } else echo 6?>
+    <?php } else echo "6";?>
     <br>
     <?php if($game->tabuleiro->numerosBloqueadosP1->numerosBloqueados[7]==false){ ?>
     <a href="<?= URL::toRoute('jogo/blockNumber', 7) ?>"> 7</a>
-    <?php } else echo 7?>
+    <?php } else echo "7";?>
     <br>
     <?php if($game->tabuleiro->numerosBloqueadosP1->numerosBloqueados[8]==false){ ?>
     <a href="<?= URL::toRoute('jogo/blockNumber', 8) ?>"> 8</a>
-    <?php } else echo 8?>
+    <?php } else echo "8";?>
     <br>
 <?php if($game->tabuleiro->numerosBloqueadosP1->numerosBloqueados[9]==false){ ?>
     <a href="<?= URL::toRoute('jogo/blockNumber', 9) ?>"> 9</a>
-    <?php } else echo 9?>
+    <?php } else echo "9";?>
     <br>
+
     <a href="<?= URL::toRoute('jogo/terminarjogadaP1') ?>">Passar Jogador</a>
+
+</div>
     <?php
+
 }
+
 ?>
+
 <?php
 if ($game->getEstadoJogo()==2) {
     ?>
     <h1>Jogador2</h1><!--FAZER IFS PARA TIRAR DE "LINK" Mostrar so numero sem link-->
     <?php if($game->tabuleiro->numerosBloqueadosP2->numerosBloqueados[1]==false){ ?>
     <a href="<?= URL::toRoute('jogo/blockNumber2', 1) ?>"> 1</a>
-    <?php } else echo 1?>
+    <?php } else echo "1";?>
     <br>
     <?php if($game->tabuleiro->numerosBloqueadosP2->numerosBloqueados[2]==false){ ?>
     <a href="<?= URL::toRoute('jogo/blockNumber2', 2) ?>"> 2</a>
-    <?php } else echo 2?>
+    <?php } else echo "2";?>
     <br>
     <?php if($game->tabuleiro->numerosBloqueadosP2->numerosBloqueados[3]==false){ ?>
     <a href="<?= URL::toRoute('jogo/blockNumber2', 3) ?>"> 3</a>
-    <?php } else echo 3?>
+    <?php } else echo "3";?>
     <br>
     <?php if($game->tabuleiro->numerosBloqueadosP2->numerosBloqueados[4]==false){ ?>
     <a href="<?= URL::toRoute('jogo/blockNumber2', 4) ?>"> 4</a>
-    <?php } else echo 4?>
+    <?php } else echo "4";?>
     <br>
     <?php if($game->tabuleiro->numerosBloqueadosP2->numerosBloqueados[5]==false){ ?>
     <a href="<?= URL::toRoute('jogo/blockNumber2', 5) ?>"> 5</a>
-    <?php } else echo 5?>
+    <?php } else echo "5";?>
     <br>
     <?php if($game->tabuleiro->numerosBloqueadosP2->numerosBloqueados[6]==false){ ?>
     <a href="<?= URL::toRoute('jogo/blockNumber2', 6) ?>"> 6</a>
-    <?php } else echo 6?>
+    <?php } else echo "6";?>
     <br>
     <?php if($game->tabuleiro->numerosBloqueadosP2->numerosBloqueados[7]==false){ ?>
     <a href="<?= URL::toRoute('jogo/blockNumber2', 7) ?>"> 7</a>
-    <?php } else echo 7?>
+    <?php } else echo "7";?>
     <br>
     <?php if($game->tabuleiro->numerosBloqueadosP2->numerosBloqueados[8]==false){ ?>
     <a href="<?= URL::toRoute('jogo/blockNumber2', 8) ?>"> 8</a>
-    <?php } else echo 8?>
+    <?php } else echo "8";?>
     <br>
     <?php if($game->tabuleiro->numerosBloqueadosP2->numerosBloqueados[9]==false){ ?>
     <a href="<?= URL::toRoute('jogo/blockNumber2', 9) ?>"> 9</a>
-    <?php } else echo 9?>
+    <?php } else echo "9";?>
     <br>
     <a href="<?= URL::toRoute('jogo/terminarjogo') ?>">Terminar Jogo</a>
-    <?php
+
+<?php
+
 }
+
+
 if ($game->getEstadoJogo()==3) {
-    echo '<h4>O vencedor é o jogador'.$game->tabuleiro->getVencedor().'</h4>';
-    echo '<h4>Ganhou com'.$game->tabuleiro->getPointsVencedor().'</h4>';
+    echo '<h4>O vencedor é o jogador '.$game->tabuleiro->getVencedor().'</h4>';
+    echo '<h4>Ganhou com '.abs($game->tabuleiro->getPointsVencedor()).' Pontos</h4>';
 }
 ?>
+
+<div class="Dadosvisual">
     <form method="post" action="<?= URL::toRoute('jogo/lancardado')?>">
+
         <img src="<?=Asset::image('Dice'.$game->tabuleiro->resultadoDado1.'.png')?>"
         <?=$game->tabuleiro->resultadoDado1
         ?>
@@ -112,18 +129,21 @@ if ($game->getEstadoJogo()==3) {
         <img src="<?=Asset::image('Dice'.$game->tabuleiro->resultadoDado2.'.png')?>"
         <?=$game->tabuleiro->resultadoDado2
         ?>
+
              <br>
 
         <h2> A Soma dos dados é <?=$game->tabuleiro->resultadoDado1+$game->tabuleiro->resultadoDado2?></h2>
-
+        <?php if(($game->getEstadoJogo()==1) or ($game->getEstadojogo()==2 )) {?>
         <input type="submit" name="teste"  value="Lançar dados">
-
+<?php }?>
     </form>
-
-    <form method="get" action="<? URL::toRoute('jogo/play')?>">
-        <input type="submit" value="Novo Jogo!">
-    </form>
-
+    <br>
+<?php if($game->getEstadoJogo()==3) {?>
+    <form method = "post" action = "<?= URL::toRoute('jogo/terminarjogo')?>" >
+        <input type = "submit" value = "Novo Jogo!" >
+    </form >
+    <?php }?>
+</div>
 <?php
 
 ?>
