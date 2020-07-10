@@ -13,8 +13,12 @@ class Game extends ActiveRecord\Model
              array('users')
     );
 
-    //VALIDA O LIMITE DE PONTOS PARA 45
-    static $validates_size_of = array(
-        array('pontos', 'maximum' => 45, 'Max points' => 'The max points you can have is 45')
+    //VALIDA APENAS PODE SER INTEGER e O maximo que pode ter é ate 45
+    static $validates_numericality_of = array(
+        array('pontos', 'only_integer' => true),
+        array('pontos', 'less_than_or_equal_to' => 45)
     );
+
+
+
 }

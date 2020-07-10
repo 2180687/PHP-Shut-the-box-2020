@@ -58,7 +58,7 @@ class Tabuleiro
     $SomaP2=$this->numerosBloqueadosP2->somaNumerosAtivos();
     $SomaP1=$this->numerosBloqueadosP1->somaNumerosAtivos();
 
-            $pontossoma=$SomaP1-$SomaP2;
+            $pontossoma=abs($SomaP1-$SomaP2);
 
             $utilizador=Session::get('utilizador');
 
