@@ -130,6 +130,9 @@ class HomeController extends BaseController
 
             }
         }
+        else{
+            return Redirect::toRoute('backoffice/index');
+        }
         if($user->admin ==0) {
             return Redirect::toRoute('backoffice/index');
         }
@@ -186,6 +189,7 @@ class HomeController extends BaseController
         $registo = User::all();
         return View::make('backoffice.index2',['informacao' => $registo]);
     }
+
     public function create()
     {
         View::make('backoffice.create');

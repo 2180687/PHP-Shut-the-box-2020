@@ -37,6 +37,7 @@ Router::post('backoffice/create','HomeController/store');
 Router::get('backoffice/editar','HomeController/editar');
 Router::post('backoffice/editar','HomeController/update');
 Router::get('backoffice/destroy','Homecontroller/destroy');
+Router::post('backoffice/index2','Homecontroller/index2');
 
 Router::get('jogo/play','GameController/game');
 Router::post('jogo/play2','GameController/mandardados');
@@ -48,6 +49,8 @@ Router::get('jogo/blockNumber2','Gamecontroller/blockNumber2');
 Router::get('jogo/terminarjogo','Gamecontroller/terminarjogo');
 
 Router::post('jogo/terminarjogo','GameController/game');
+
+
 
 
 
